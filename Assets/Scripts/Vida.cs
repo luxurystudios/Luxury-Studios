@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class Vida : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float currentHealth;
