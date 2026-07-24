@@ -11,28 +11,27 @@ public class Vida : MonoBehaviour
     public float safeFallHeight = 4f;
     public float damageMultiplier = 10f;
 
-    private CharacterController controller;
-    private float highestPoint;
-    private bool wasGrounded;
+    CharacterController controller;
+    float highestPoint;
+    bool wasGrounded;
 
     void Start()
     {
         currentHealth = maxHealth;
         controller = GetComponent<CharacterController>();
-
-        if (healthBar != null)
-            healthBar.size = 1f;
+        UpdateHealthBar();
     }
 
     void Update()
     {
-        UpdateHealthBar();
         CheckFallDamage();
+        UpdateHealthBar();
     }
 
     void CheckFallDamage()
     {
-        if (controller == null) return;
+        if (controller == null)
+            return;
 
         if (!controller.isGrounded)
         {
@@ -63,13 +62,13 @@ public class Vida : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            Die();
-        }
+        if (currentHealth < 0f)
+            currentHealth = 0f;
 
         UpdateHealthBar();
+
+        if (currentHealth <= 0f)
+            Die();
     }
 
     public void Heal(float amount)
