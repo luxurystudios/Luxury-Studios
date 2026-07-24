@@ -1,9 +1,9 @@
 using UnityEngine;
 using TMPro;
 
-public class MoneyManager : MonoBehaviour
+public class Money : MonoBehaviour
 {
-    public static MoneyManager Instance;
+    public static Money Instance;
 
     [Header("Dinero")]
     public int money = 1000;
